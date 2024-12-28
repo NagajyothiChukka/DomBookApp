@@ -2,6 +2,8 @@ import { baseUrl } from "./baseUrl.js";
 
 let form = document.getElementById("form");
 
+getData();
+
 form.addEventListener("submit", function () {
     event.preventDefault();
     let title = form.title.value;
@@ -37,4 +39,30 @@ form.addEventListener("submit", function () {
     form.reset();
 
 });
+
+async function getData() {
+    try {
+        let res = await fetch(`${baseUrl}/books`);
+        console.log(res);
+        let data = await res.json();
+
+        console.log(data);
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+
+// function displayBooks(){
+//     let card = document.createElement("div")
+//     let title = document.createElement("h3");
+
+//     let author = document.createAttribute("h3");
+//     let category = document.createAttribute("h3");
+//     let availabilityStatus = document.createElement("h3");
+//     let borrowedDays = document.createElement("h3");
+
+//     card.append(title, author, category, availabilityStatus, borrowedDays)
+
+// }
 
