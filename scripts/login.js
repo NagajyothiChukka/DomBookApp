@@ -8,6 +8,7 @@ form.addEventListener("submit", function () {
     if (email == "admin@empher.com" && password == "empher@123") {
         window.location.href = "admin.html";
         alert("Logged in as Admin");
+        localStorage.setItem("loginData", JSON.stringify({ email, password }));
 
     } else if (email == "user@empher.com" && password == "user@123") {
         window.location.href = "books.html";
