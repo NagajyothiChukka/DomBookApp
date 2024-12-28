@@ -45,24 +45,31 @@ async function getData() {
         let res = await fetch(`${baseUrl}/books`);
         console.log(res);
         let data = await res.json();
-
-        console.log(data);
+        displayBooks(data);
+        // console.log(data);
     } catch (err) {
         console.log(err);
     }
 }
 
+let cont = document.getElementById("cont");
 
-// function displayBooks(){
-//     let card = document.createElement("div")
-//     let title = document.createElement("h3");
+function displayBooks(arr) {
+    let card = document.createElement("div")
 
-//     let author = document.createAttribute("h3");
-//     let category = document.createAttribute("h3");
-//     let availabilityStatus = document.createElement("h3");
-//     let borrowedDays = document.createElement("h3");
+    arr.map((el, i) => {
+        let title = document.createElement("h3");
+        title = `title: ${el.title} `;
 
-//     card.append(title, author, category, availabilityStatus, borrowedDays)
+        let author = document.createElement("h3");
+        author = `author: ${el.author} `;
 
-// }
+        let category = document.createElement("h3");
+        category = `category: ${el.category} `
+        card.append(title, author, category);
+        cont.append(card);
+ })
+
+
+}
 
